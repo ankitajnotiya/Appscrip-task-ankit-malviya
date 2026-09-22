@@ -1,0 +1,404 @@
+.footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 60px 40px 30px 40px;
+  font-family: inherit;
+}
+
+/* --- TOP SECTION --- */
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #333333;
+}
+
+.newsletter {
+  max-width: 600px;
+  width: 100%;
+}
+
+.newsletter h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.newsletter p {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.emailInput {
+  display: flex;
+  gap: 16px;
+  max-width: 500px;
+  height: 48px;
+}
+
+.emailInput input {
+  flex: 1;
+  background-color: #ffffff;
+  border: none;
+  padding: 12px 16px;
+  font-size: 18px;
+  color: #333;
+  outline: none;
+}
+
+.emailInput input::placeholder {
+  color: #888;
+}
+
+.emailInput button {
+  background-color: transparent;
+  border: 1px solid #666;
+  color: #ffffff;
+  padding: 0 28px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.emailInput button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.contact {
+  width: 520px;
+  max-width: 100%;
+}
+
+.contact h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.contact p {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+}
+
+.contact a {
+  font-size: 18px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact a:hover {
+  color: #cccccc;
+}
+
+.currency {
+  margin-top: 24px;
+}
+
+.currency h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+}
+
+.currencySelect {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.flagIcon {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.note {
+  font-size: 12px;
+  color: #aaaaaa;
+  line-height: 1.4;
+  margin: 0;
+  white-space: normal;
+}
+
+/* --- BOTTOM SECTION --- */
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.column {
+  flex: 1;
+}
+
+.column:last-child {
+  max-width: 520px;
+  flex: none;
+  width: 520px;
+}
+
+/* Desktop Headings */
+.columnHeading {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.column a {
+  font-size: 18px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+  line-height: 1.5;
+}
+
+.column a:hover {
+  color: #aaaaaa;
+}
+
+/* Social Section */
+.social {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.socialIcon:hover {
+  background-color: #333333;
+}
+
+.socialImg {
+  object-fit: contain;
+}
+
+/* Payment Section */
+.accepts {
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.payments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.payment {
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paymentImg {
+  width: 40px !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+/* Copyright */
+.copyright {
+  text-align: center;
+  padding-top: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.copyright p {
+  font-size: 14px;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Mobile Accordion Header (Desktop par Hidden) */
+.columnHeader {
+  display: none;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 20px 20px 20px;
+  }
+
+  .topSection {
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 30px;
+  }
+
+  .newsletter,
+  .contact {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .emailInput {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    height: 40px;
+  }
+
+  .emailInput input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .emailInput button {
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .contact h3 {
+    font-size: 16px;
+  }
+
+  .contact p,
+  .contact a {
+    font-size: 14px;
+  }
+
+  .bottomSection {
+    flex-direction: column;
+    gap: 0;
+    padding-top: 0;
+    padding-bottom: 20px;
+  }
+
+  .column {
+    border-bottom: 1px solid #333;
+    width: 100%;
+  }
+
+  .column:last-child {
+    border-bottom: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .columnHeading {
+    display: none;
+  }
+
+  .columnHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 18px 0;
+    width: 100%;
+  }
+
+  .columnHeader h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .columnToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .columnToggle.open {
+    transform: rotate(180deg);
+  }
+
+  .columnContent {
+    display: none;
+    padding-bottom: 18px;
+  }
+
+  .columnContent.openMobile {
+    display: block;
+  }
+
+  .column a {
+    font-size: 16px;
+  }
+
+  .socialIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .socialImg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .accepts {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+  }
+
+  .payment {
+    padding: 5px 8px;
+  }
+
+  .paymentImg {
+    width: 36px !important;
+  }
+
+  .currency {
+    display: none;
+  }
+}
