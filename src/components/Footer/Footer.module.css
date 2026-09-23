@@ -132,6 +132,15 @@
   object-fit: cover;
 }
 
+.flagIconWrapper {
+  position: relative;
+  width: 24px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .note {
   font-size: 12px;
   color: #aaaaaa;
@@ -216,6 +225,15 @@
   object-fit: contain;
 }
 
+.socialImgWrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Payment Section */
 .accepts {
   font-size: 15px;
@@ -247,6 +265,15 @@
   object-fit: contain;
 }
 
+.paymentImgWrapper {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Copyright */
 .copyright {
   text-align: center;
@@ -261,7 +288,7 @@
   margin: 0;
 }
 
-/* Mobile Accordion Header (Desktop par Hidden) */
+/* Mobile Accordion Header (Desktop Hidden) */
 .columnHeader {
   display: none;
 }

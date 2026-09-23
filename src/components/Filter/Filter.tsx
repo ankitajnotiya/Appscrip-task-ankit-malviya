@@ -3,9 +3,13 @@
 import { useState } from "react";
 import styles from "./Filter.module.css";
 
-export default function Filter() {
+interface FilterProps {
+  onFilterChange?: (category: string, selectedItems: string[]) => void;
+}
+
+export default function Filter({ onFilterChange }: FilterProps) {
   const [expandedFilter, setExpandedFilter] = useState<string | null>(null);
-  const [selectedItems, setSelectedItems] = useState<Record<string, string>>({});
+  const [selectedItems, setSelectedItems] = useState<Record<string, string[]>>({});
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [isRecommendedOpen, setIsRecommendedOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState("RECOMMENDED");
@@ -32,8 +36,41 @@ export default function Filter() {
   const toggleFilter = (label: string) => {
     setExpandedFilter(expandedFilter === label ? null : label);
     if (expandedFilter !== label && !selectedItems[label]) {
-      setSelectedItems(prev => ({ ...prev, [label]: "All" }));
+      const newSelection = { ...selectedItems, [label]: ["All"] };
+      setSelectedItems(newSelection);
+      onFilterChange?.(label, ["All"]);
     }
+  };
+
+  const handleItemSelection = (filterLabel: string, item: string) => {
+    let newSelection: string[];
+    
+    if (item === "All") {
+      newSelection = ["All"];
+    } else {
+      const currentSelection = selectedItems[filterLabel] || [];
+      if (currentSelection.includes(item)) {
+        // Remove item if already selected
+        newSelection = currentSelection.filter(i => i !== item);
+        // If no items left, select "All"
+        if (newSelection.length === 0) {
+          newSelection = ["All"];
+        }
+      } else {
+        // Add item and remove "All" if it was selected
+        newSelection = currentSelection.filter(i => i !== "All");
+        newSelection.push(item);
+      }
+    }
+    
+    setSelectedItems(prev => ({ ...prev, [filterLabel]: newSelection }));
+    onFilterChange?.(filterLabel, newSelection);
+  };
+
+  const handleUnselectAll = (filterLabel: string) => {
+    const newSelection = ["All"];
+    setSelectedItems(prev => ({ ...prev, [filterLabel]: newSelection }));
+    onFilterChange?.(filterLabel, newSelection);
   };
 
   return (
@@ -95,22 +132,25 @@ export default function Filter() {
               
               {expandedFilter === filter.label && (
                 <div className={styles.filterItems}>
-                  {filter.items.map((item) => (
-                    <div
-                      key={item}
-                      className={`${styles.filterItem} ${selectedItems[filter.label] === item ? styles.selectedItem : ''}`}
-                      onClick={() => setSelectedItems(prev => ({ ...prev, [filter.label]: item }))}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedItems[filter.label] === item}
-                        onChange={() => setSelectedItems(prev => ({ ...prev, [filter.label]: item }))}
-                        className={styles.checkbox}
-                      />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                  <div className={styles.unselectAll} onClick={() => setSelectedItems(prev => ({ ...prev, [filter.label]: "All" }))}>
+                  {filter.items.map((item) => {
+                    const isSelected = (selectedItems[filter.label] || []).includes(item);
+                    return (
+                      <div
+                        key={item}
+                        className={`${styles.filterItem} ${isSelected ? styles.selectedItem : ''}`}
+                        onClick={() => handleItemSelection(filter.label, item)}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => handleItemSelection(filter.label, item)}
+                          className={styles.checkbox}
+                        />
+                        <span>{item}</span>
+                      </div>
+                    );
+                  })}
+                  <div className={styles.unselectAll} onClick={() => handleUnselectAll(filter.label)}>
                     Unselect all
                   </div>
                 </div>

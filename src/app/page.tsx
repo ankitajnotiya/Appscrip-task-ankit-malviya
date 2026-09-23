@@ -1,6 +1,7 @@
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import PageContent from '@/components/PageContent/PageContent';
+import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 import styles from './page.module.css';
 
 const mockProducts = [
@@ -9,106 +10,136 @@ const mockProducts = [
     name: 'Charcoal Woven Backpack',
     description: 'Premium woven backpack with adjustable straps',
     price: '$99.00',
-    image: '/images/Rectangle 29437.png',
+    image: '/images/charcoal-woven-backpack.png',
+    rating: 4.5,
+    category: 'bags',
   },
   {
     id: '2',
     name: 'Yellow Crochet Dinosaur Toy',
     description: 'Handmade crochet dinosaur toy',
     price: '$149.00',
-    image: '/images/Image.png',
+    image: '/images/yellow-crochet-dinosaur-toy.png',
     isOutOfStock: true,
+    rating: 4.8,
+    category: 'toys',
   },
   {
     id: '3',
     name: 'Leather ID Card Holder',
     description: 'Genuine leather card holder',
     price: '$89.00',
-    image: '/images/Rectangle 29418.png',
+    image: '/images/leather-id-card-holder.png',
+    rating: 4.2,
+    category: 'accessories',
   },
   {
     id: '4',
     name: 'Embroidered Linen Cap',
     description: 'Stylish linen cap with embroidery',
     price: '$129.00',
-    image: '/images/Rectangle 29431.png',
+    image: '/images/embroidered-linen-cap.png',
+    rating: 4.0,
+    category: 'clothing',
   },
   {
     id: '5',
     name: 'Charcoal Backpack (Back View)',
     description: 'Durable charcoal backpack',
     price: '$159.00',
-    image: '/images/Rectangle 19438.png',
+    image: '/images/charcoal-backpack-back-view.png',
+    rating: 4.6,
+    category: 'bags',
   },
   {
     id: '6',
     name: 'Crochet Dinosaur Plush',
     description: 'Soft crochet dinosaur plush toy',
     price: '$119.00',
-    image: '/images/Rectangle 29433.png',
+    image: '/images/crochet-dinosaur-plush.png',
+    rating: 4.7,
+    category: 'toys',
   },
   {
     id: '7',
     name: 'Tan Leather Shoulder Bag',
     description: 'Elegant tan leather shoulder bag',
     price: '$199.00',
-    image: '/images/Rectangle 29434.png',
+    image: '/images/tan-leather-shoulder-bag.png',
+    rating: 4.9,
+    category: 'bags',
   },
   {
     id: '8',
     name: 'Grey Travel Roll-Pouch',
     description: 'Compact travel pouch',
     price: '$139.00',
-    image: '/images/Rectangle 29436.png',
+    image: '/images/grey-travel-roll-pouch.png',
+    rating: 4.3,
+    category: 'accessories',
   },
   {
     id: '9',
     name: 'Woven Backpack (Folded)',
     description: 'Foldable woven backpack',
     price: '$109.00',
-    image: '/images/Rectangle 29432.png',
+    image: '/images/woven-backpack-folded.png',
+    rating: 4.4,
+    category: 'bags',
   },
   {
     id: '10',
     name: 'Striped Coin Pouch',
     description: 'Colorful striped coin pouch',
     price: '$79.00',
-    image: '/images/Rectangle 29439.png',
+    image: '/images/striped-coin-pouch.png',
+    rating: 4.1,
+    category: 'accessories',
   },
   {
     id: '11',
     name: 'Tan Braided Leather Bag',
     description: 'Braided leather design bag',
     price: '$89.00',
-    image: '/images/Rectangle 29438.png',
+    image: '/images/tan-braided-leather-bag.png',
+    rating: 4.5,
+    category: 'bags',
   },
   {
     id: '12',
     name: 'Charcoal Woven Backpack',
     description: 'Classic woven backpack design',
     price: '$129.00',
-    image: '/images/Rectangle 29437.png',
+    image: '/images/charcoal-woven-backpack.png',
+    rating: 4.3,
+    category: 'bags',
   },
   {
     id: '13',
     name: 'Leather ID Card Holder',
     description: 'Premium leather card holder',
     price: '$149.00',
-    image: '/images/Rectangle 29418.png',
+    image: '/images/leather-id-card-holder.png',
+    rating: 4.6,
+    category: 'accessories',
   },
   {
     id: '14',
     name: 'Embroidered Linen Cap',
     description: 'Comfortable linen cap',
     price: '$99.00',
-    image: '/images/Rectangle 29431.png',
+    image: '/images/embroidered-linen-cap.png',
+    rating: 4.2,
+    category: 'clothing',
   },
   {
     id: '15',
     name: 'Crochet Dinosaur Plush',
     description: 'Adorable crochet dinosaur',
     price: '$179.00',
-    image: '/images/Rectangle 29433.png',
+    image: '/images/crochet-dinosaur-plush.png',
+    rating: 4.8,
+    category: 'toys',
   },
 ];
 
@@ -134,6 +165,8 @@ async function getProducts() {
       price: `$${product.price.toFixed(2)}`,
       image: product.image,
       isOutOfStock: false,
+      rating: product.rating?.rate || 0,
+      category: product.category,
     }));
   } catch (error) {
     console.log('Using mock data due to API error');
@@ -199,6 +232,7 @@ export default async function Home() {
       />
       <Header />
       <main className={styles.main}>
+        <Breadcrumb />
         <section className={styles.heroSection}>
           <h1 className={styles.heroTitle}>DISCOVER OUR PRODUCTS</h1>
           <p className={styles.heroSubtitle}>

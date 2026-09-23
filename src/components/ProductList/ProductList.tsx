@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import styles from './ProductList.module.css';
 
@@ -11,6 +11,8 @@ interface Product {
   price: string;
   image: string;
   isOutOfStock?: boolean;
+  rating?: number;
+  category?: string;
 }
 
 interface ProductListProps {
@@ -27,6 +29,13 @@ export default function ProductList({ products }: ProductListProps) {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
 
+  // Reset to page 1 when products change
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(1);
+    }
+  }, [products.length, totalPages, currentPage]);
+
   return (
     <>
       <div className={styles.productsGrid}>
@@ -39,38 +48,41 @@ export default function ProductList({ products }: ProductListProps) {
             price={product.price}
             image={product.image}
             isOutOfStock={product.isOutOfStock}
+            rating={product.rating}
           />
         ))}
       </div>
 
       {/* Pagination */}
-      <div className={styles.pagination}>
-        <button
-          className={styles.pageBtn}
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage(prev => prev - 1)}
-        >
-          &lt;
-        </button>
-
-        {Array.from({ length: totalPages }, (_, index) => (
+      {totalPages > 1 && (
+        <div className={styles.pagination}>
           <button
-            key={index + 1}
-            className={`${styles.pageBtn} ${currentPage === index + 1 ? styles.activePage : ''}`}
-            onClick={() => setCurrentPage(index + 1)}
+            className={styles.pageBtn}
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage(prev => prev - 1)}
           >
-            {index + 1}
+            &lt;
           </button>
-        ))}
 
-        <button
-          className={styles.pageBtn}
-          disabled={currentPage === totalPages}
-          onClick={() => setCurrentPage(prev => prev + 1)}
-        >
-          &gt;
-        </button>
-      </div>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              className={`${styles.pageBtn} ${currentPage === index + 1 ? styles.activePage : ''}`}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+
+          <button
+            className={styles.pageBtn}
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage(prev => prev + 1)}
+          >
+            &gt;
+          </button>
+        </div>
+      )}
     </>
   );
 }

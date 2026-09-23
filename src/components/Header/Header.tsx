@@ -6,12 +6,37 @@ import styles from "./Header.module.css";
 export default function Header() {
   const [langOpen, setLangOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [wishlistCount, setWishlistCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
 
   const languages = [
     { code: "EN", name: "English" },
     { code: "ES", name: "Español" },
     { code: "FR", name: "Français" },
   ];
+
+  const handleSearchClick = () => {
+    setSearchOpen(!searchOpen);
+    if (!searchOpen) {
+      // Simulate search functionality
+      alert("Search functionality would open here");
+    }
+  };
+
+  const handleWishlistClick = () => {
+    setWishlistCount(prev => prev + 1);
+    alert("Added to wishlist!");
+  };
+
+  const handleCartClick = () => {
+    setCartCount(prev => prev + 1);
+    alert("Added to cart!");
+  };
+
+  const handleUserClick = () => {
+    alert("User account functionality would open here");
+  };
 
   return (
     <header className={styles.header}>
@@ -36,7 +61,7 @@ export default function Header() {
             <div className={styles.logoIconWrapper} style={{ position: "relative" }}>
               <Image 
               src="/images/Logo.png" 
-              alt="Brand Logo" 
+              alt="mettà muse Brand Logo" 
               fill
               sizes="(max-width: 768px) 20px, 35px"
               style={{ objectFit: "contain" }}
@@ -49,7 +74,11 @@ export default function Header() {
             {/* Right: Only 3 Icons on Mobile */}
             <div className={styles.icons}>
               {/* Search */}
-              <button className={styles.iconBtn} aria-label="Search">
+              <button 
+                className={styles.iconBtn} 
+                aria-label="Search"
+                onClick={handleSearchClick}
+              >
                 <svg className={styles.desktopIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <circle cx="11" cy="11" r="8"></circle>
                   <path d="m21 21-4.35-4.35"></path>
@@ -57,23 +86,37 @@ export default function Header() {
               </button>
 
               {/* Wishlist */}
-              <button className={styles.iconBtn} aria-label="Wishlist">
+              <button 
+                className={styles.iconBtn} 
+                aria-label="Wishlist"
+                onClick={handleWishlistClick}
+              >
                 <svg className={styles.desktopIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
+                {wishlistCount > 0 && <span className={styles.badge}>{wishlistCount}</span>}
               </button>
 
               {/* Shopping Bag */}
-              <button className={styles.iconBtn} aria-label="Shopping Bag">
+              <button 
+                className={styles.iconBtn} 
+                aria-label="Shopping Bag"
+                onClick={handleCartClick}
+              >
                 <svg className={styles.desktopIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <circle cx="9" cy="21" r="1"></circle>
                   <circle cx="20" cy="21" r="1"></circle>
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>
+                {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
               </button>
 
               {/* Desktop Only: User Account */}
-              <button className={styles.iconBtn} aria-label="User Account">
+              <button 
+                className={styles.iconBtn} 
+                aria-label="User Account"
+                onClick={handleUserClick}
+              >
                 <svg className={styles.desktopIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>

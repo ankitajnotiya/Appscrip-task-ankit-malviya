@@ -82,6 +82,7 @@
   color: #000000;
   transition: all 0.3s ease;
   line-height: 0;
+  position: relative;
 }
 
 .iconBtn:hover {
@@ -90,8 +91,25 @@
 }
 
 .desktopIcon {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #000;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(25%, -25%);
 }
 
 .langBtn {
@@ -487,12 +505,9 @@
     width: 20px;
     height: 20px;
   }
-}
-
-/* Desktop - Increase icon size to 24x24 */
-@media (min-width: 769px) {
+  
   .desktopIcon {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
   }
 }
