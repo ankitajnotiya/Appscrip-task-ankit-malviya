@@ -9,10 +9,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  experimental: {
-    turbo: {
-      root: '.',
-    },
+  turbo: {
+    root: '.',
   },
 };
 
