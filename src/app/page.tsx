@@ -185,7 +185,7 @@ export default async function Home() {
     '@type': 'CollectionPage',
     name: 'Discover Our Products | mettà muse',
     description: 'Explore our curated collection of premium products including bags, accessories, and lifestyle items.',
-    url: 'https://mettamuse.com',
+    url: 'https://appscrip-task-ankit-malviya.netlify.app',
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: products.map((product: any, index: number) => ({
@@ -212,13 +212,13 @@ export default async function Home() {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://mettamuse.com',
+          item: 'https://appscrip-task-ankit-malviya.netlify.app',
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Products',
-          item: 'https://mettamuse.com/products',
+          item: 'https://appscrip-task-ankit-malviya.netlify.app',
         },
       ],
     },

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://mettamuse.com'),
+  metadataBase: new URL('https://appscrip-task-ankit-malviya.netlify.app'),
   alternates: {
     canonical: '/',
   },
